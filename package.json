@@ -1,7 +1,6 @@
 {
   "name": "cherry-id",
   "version": "0.0.1",
-  "description": "",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -16,7 +15,8 @@
   "author": "bubao",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bubao/IdGenerator-nodejs/issues"
+    "url": "https://github.com/bubao/cherry-id-js/issues"
   },
-  "homepage": "https://github.com/bubao/IdGenerator-nodejs#readme"
+  "homepage": "https://github.com/bubao/cherry-id-js#readme",
+  "description": ""
 }
