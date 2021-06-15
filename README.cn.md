@@ -3,7 +3,7 @@
  * @author: bubao
  * @Date: 2021-06-07 14:44:04
  * @LastEditors: bubao
- * @LastEditTime: 2021-06-15 13:38:28
+ * @LastEditTime: 2021-06-15 13:44:15
 -->
 
 # 🌸 cherry-id
@@ -11,6 +11,8 @@
 [![NPM version](https://img.shields.io/npm/v/cherry-id.svg)](https://www.npmjs.com/package/cherry-id) [![jaywcjlove/sb](https://jaywcjlove.github.io/sb/lang/english.svg)](README.md)
 
 ## 介绍
+
+核心算法版权属于 [yitter](https://github.com/yitter)
 
 项目更多介绍参照：[https://github.com/yitter/IdGenerator](https://github.com/yitter/IdGenerator)
 
