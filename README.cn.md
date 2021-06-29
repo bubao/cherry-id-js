@@ -3,7 +3,7 @@
  * @author: bubao
  * @Date: 2021-06-07 14:44:04
  * @LastEditors: bubao
- * @LastEditTime: 2021-06-15 13:44:15
+ * @LastEditTime: 2021-06-29 13:24:12
 -->
 
 # 🌸 cherry-id
@@ -19,7 +19,7 @@
 ## 使用
 
 ```js
-const GenId = require('..');
+const GenId = require('cherry-id');
 const genid = new GenId({ WorkerId: (process.argv[2] || 1) - 0 });
 
 (() => {
