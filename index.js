@@ -5,7 +5,7 @@
  * @last author: bubao
  * @last edit time: 2021-04-27 23:17:06
  */
-class Genid {
+class GenId {
     /**
      *Creates an instance of Genid.
      * @author bubao
@@ -43,7 +43,7 @@ class Genid {
             options.SeqBitLength = SeqBitLength;
         }
         // 5.MaxSeqNumber
-        const MaxSeqNumber = (1 << SeqBitLength) - 1;
+        const MaxSeqNumber = (1 << options.SeqBitLength) - 1;
         if (options.MaxSeqNumber <= 0 || options.MaxSeqNumber === undefined) {
             options.MaxSeqNumber = MaxSeqNumber;
         }
@@ -148,8 +148,10 @@ class Genid {
                 }
                 this.BeginTurnBackAction(this._TurnBackTimeTick);
             }
+
             return this.CalcTurnBackId(this._TurnBackTimeTick);
         }
+
         // 时间追平时，_TurnBackTimeTick 清零
         if (this._TurnBackTimeTick > 0) {
             this.EndTurnBackAction(this._TurnBackTimeTick);
@@ -202,13 +204,62 @@ class Genid {
         return tempTimeTicker;
     }
 
+
+    /**
+     * 生成ID
+     * @returns 始终输出number类型，超过时throw error
+     */
+    NextNumber() {
+        if (this._IsOverCost) {
+            //
+            let id = this.NextOverCostId()
+            if (id >= 9007199254740992n)
+                throw Error(`${id.toString()} over max of Number 9007199254740992`)
+
+            return parseInt(id.toString())
+        } else {
+            //
+            let id = this.NextNormalId()
+            if (id >= 9007199254740992n)
+                throw Error(`${id.toString()} over max of Number 9007199254740992`)
+
+            return parseInt(id.toString())
+        }
+    }
+
+    /**
+     * 生成ID
+     * @returns 根据输出数值判断，小于number最大值时输出number类型，大于时输出bigint
+     */
     NextId() {
         if (this._IsOverCost) {
-            return parseInt(this.NextOverCostId());
+            let id = this.NextOverCostId()
+            if (id >= 9007199254740992n)
+                return id
+            else
+                return parseInt(id)
         } else {
-            return parseInt(this.NextNormalId());
+            let id = this.NextNormalId()
+            if (id >= 9007199254740992n)
+                return id
+            else
+                return parseInt(id)
+        }
+    }
+
+    /**
+     * 生成ID
+     * @returns 始终输出bigint类型
+     */
+    NextBigId() {
+        if (this._IsOverCost) {
+            //
+            return this.NextOverCostId()
+        } else {
+            //
+            return this.NextNormalId()
         }
     }
 }
 
-module.exports = Genid;
+module.exports = GenId;
